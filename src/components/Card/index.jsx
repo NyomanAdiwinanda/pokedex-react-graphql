@@ -21,7 +21,9 @@ const A = styled.a`
 const Index = ({ name, image, nickname, removePokemon }) => {
   const navigate = useNavigate();
 
-  const numOwned = JSON.parse(localStorage.myPokemon).filter((el) => el.name === name).length;
+  const numOwned = localStorage.myPokemon
+    ? JSON.parse(localStorage.myPokemon).filter((el) => el.name === name).length
+    : 0;
 
   return (
     <Card>

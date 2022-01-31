@@ -15,7 +15,7 @@ const MyPokemonList = () => {
   const [pokemon, setPokemon] = useState([]);
 
   useEffect(() => {
-    setPokemon(JSON.parse(localStorage.myPokemon));
+    setPokemon(localStorage.myPokemon ? JSON.parse(localStorage.myPokemon) : []);
   }, [render]);
 
   const removePokemon = (nickname) => {

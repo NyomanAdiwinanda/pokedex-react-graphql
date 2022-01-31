@@ -60,14 +60,25 @@ const PokemonDetail = () => {
           confirmButtonText: "Enter",
           showLoaderOnConfirm: true,
           preConfirm: (val) => {
-            let newList = [
-              ...JSON.parse(localStorage.myPokemon),
-              {
-                name: params.name,
-                image: location.state.image,
-                nickname: val,
-              },
-            ];
+            let newList;
+            if (localStorage.myPokemon) {
+              newList = [
+                ...JSON.parse(localStorage.myPokemon),
+                {
+                  name: params.name,
+                  image: location.state.image,
+                  nickname: val,
+                },
+              ];
+            } else {
+              newList = [
+                {
+                  name: params.name,
+                  image: location.state.image,
+                  nickname: val,
+                },
+              ];
+            }
             localStorage.myPokemon = JSON.stringify(newList);
 
             return true;
